@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Demo Application</title>
+</head>
+<body>
+<br>
+<h2>Demo APPlication</h2>
+<br>
+<h3>Total number of Users, Questions, and Answers in the system</h3>
+<br>
+<table>
+  <tr>
+    <th>Total number of Users</th>
+    <th>Total number of Questions</th>
+    <th>Total number of Answers</th>
+  </tr>
+  <tr>
+    <td><%= User.count %></td>
+    <td><%= Question.count %></td>
+    <td><%= Answer.count %></td>
+  </tr>
+</table>
+<br>
+<h3>Tenant API request counts for all Tenants</h3>
+<br>
+
+<table>
+  <tr>
+    <th>All Tenants</th>
+    <th>API request url</th>
+    <th>Per User Tenants</th>
+  </tr>
+  <% @tenants.each do |tenant|%>
+  <tr>
+    <td><%= tenant.name %></td>
+    <td><%= "#{request.original_url}tenants/#{tenant.id}" %><td>
+    <td><%= tenant.users.count %></td>
+  </tr>
+  <% end %>
+</table>
+</body>
+</html>
